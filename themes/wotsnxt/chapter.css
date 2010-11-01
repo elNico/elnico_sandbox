@@ -1,0 +1,178 @@
+/* $Id: chapter.css */
+/**
+ * Styles for Story Chapters
+**/
+.jcarousel-prev-horizontal{
+  display:block;
+  width:30px;
+  height:220px;
+  position: absolute;
+  left: 0;
+  top:0;
+  background-position:right top;
+  background-repeat: no-repeat;
+  cursor:pointer;
+}
+.jcarousel-prev-disabled {
+  background-position:top left;
+  cursor:default;
+}
+.jcarousel-next-horizontal{
+  display:block;
+  width:30px;
+  height:220px;
+  position: absolute;
+  right: 0;
+  top:0;
+  background-position:left top;
+  background-repeat: no-repeat;
+  cursor:pointer;
+}
+.jcarousel-next-disabled {
+  background-position:top right;
+  cursor:default;
+}
+.jcarousel-clip {
+  display: block;
+  width:90%;
+  margin: 0 auto;
+  color:#fff !important;
+  -moz-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-radius: 10px;
+}
+.jcarousel-item {
+  height:220px !important;
+  width:590px;
+  margin: 0;
+}
+.jcarousel-item .views-field-name,
+.jcarousel-item .views-field-body,
+.jcarousel-item .comment-link {
+  margin:0 0 0 10px;
+}
+.jcarousel-item .views-field-created {
+  margin:10px 10px 0 0;
+}
+.jcarousel-item .report-link {
+  margin:0 10px 0 0;
+}
+
+.next-chapter-button {
+  display:block;
+  margin: 2px auto 0;
+  height:30px;
+  width:220px;
+}
+.next-chapter-button a,
+.next-chapter-button a:link,
+.next-chapter-button a:visited{
+  font-size:0pt;
+  height:30px;
+  width:220px;
+  display:block;
+  background-position:left top;
+  background-repeat: no-repeat;
+  cursor:default;
+}
+.next-chapter-button a:hover{
+  cursor:pointer;
+  background-position:left bottom; 
+}
+  
+.jcarousel-item .views-field-body {
+  display:block;
+  color:#000 !important;
+  width:93%;
+  height: 130px;
+  padding:9px 10px;
+  -moz-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border-radius: 10px;
+}
+
+.comment-link{
+  float:left;
+}
+.report-link{
+  float:right;
+}
+a.comment-link,
+a.report-link {
+  font-size:80%;
+  color:#fff;
+  text-decoration: underline;
+}
+a.comment-link:hover,
+a.report-link:hover {
+  text-decoration: none;
+}
+
+/* Scary */
+.scary .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-scary.png");
+}
+.scary .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-scary.png");
+}
+.scary .next-chapter-button a {
+  background-image:url('images/jcar-down-scary.png');  
+}
+
+/* Science Fiction */
+.science-fiction .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-science.png");
+}
+.science-fiction .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-science.png");
+}
+.science-fiction .next-chapter-button a {
+  background-image:url('images/jcar-down-science.png');  
+} 
+
+/* Action Adventure */
+.action-adventure .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-action.png");
+}
+.action-adventure .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-action.png");
+}
+.action-adventure .next-chapter-button a {
+  background-image:url('images/jcar-down-action.png');  
+} 
+ 
+/* Funny */
+.funny .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-funny.png");
+}
+.funny .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-funny.png");
+}
+.funny .next-chapter-button a {
+  background-image:url('images/jcar-down-funny.png');  
+}
+   
+/* Mystery */
+.mystery .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-mystery.png");
+}
+.mystery .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-mystery.png");
+}
+.mystery .next-chapter-button a {
+  background-image:url('images/jcar-down-mystery.png');  
+}    
+     
+/* Fantasy Romance */
+.fantasy-romance .jcarousel-prev-horizontal {
+  background-image:url("images/jcar-prev-fantasy.png");
+}
+.fantasy-romance .jcarousel-next-horizontal {
+  background-image:url("images/jcar-next-fantasy.png");
+}
+.fantasy-romance .next-chapter-button a {
+  background-image:url('images/jcar-down-fantasy.png');  
+}   
+    

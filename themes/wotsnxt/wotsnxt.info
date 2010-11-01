@@ -1,0 +1,22 @@
+; $Id: wotsnxt.info,v 1.5 2007/07/01 23:27:32 goba Exp $
+name = Wotsnxt
+description = Theme for Wotsnxt site.
+version = VERSION
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+stylesheets[all][] = chapter.css
+stylesheets[print][] = print.css
+       
+regions[header] = Header
+regions[site_nav] = Site navigation
+regions[left_content] = Left content  
+regions[right_content] = Right content
+regions[footer] = Footer
+
+
+; Information added by drupal.org packaging script on 2009-12-16
+version = "6.16"
+project = "drupal"
+datestamp = "1260996916"
+

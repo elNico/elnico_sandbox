@@ -1,0 +1,3 @@
+<?php
+
+include_once('wotsnxt_features.features.inc');

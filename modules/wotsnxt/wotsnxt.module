@@ -1,0 +1,103 @@
+<?php
+// $Id$
+
+function wotsnxt_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+
+
+  if ($op == 'view') {
+    //dsm($node);
+    $mod = drupal_get_path('module', 'wotsnxt');
+    drupal_add_js($mod .'/wotsnxt.js');
+    drupal_add_js(array('jcarousel' => array('#viewscarousel-story-thread-panel-pane-1' => array('itemVisibleOutCallback'=>'example_visibleOutCallback'))), 'setting');
+
+    $path = $_GET['q'];
+    $args = explode('/', $path);
+    unset($args[0]);
+    $weight = 100;
+    $index = 0;
+    $link = 'node';
+    foreach ($args as $k => $arg) {
+      $link .= '/'. $arg;
+      //$view = views_embed_view('story_thread', $display_id = 'panel_pane_1', $arg, $link);
+
+      $view = views_get_view('story_thread');
+      $view->set_display('panel_pane_1');
+      $view->set_arguments(array($arg, $link));
+      $view->execute();
+      //$view->pre_execute();
+      //dsm($view);
+
+
+      // The current arg is the parent of the carousel, the arg after (if present) is the active item in it.
+      $active = $args[$k += 1];
+      if (is_numeric($active)) {
+        foreach ($view->result as $k => $obj) {
+          if ($obj->nid == $active) {
+            // Set the correct start item in the carousel. The results index is 0 based, but the jcarousel one not, hence the increase by one.
+            $view->style_plugin->options['start'] = $k += 1;
+          }
+        }
+      }
+
+      if (count($view->result) == 0) {
+        $cont = new stdClass();
+        $cont->node_title = 'sdfsdf';
+        $view->result[] = $cont;
+        //dsm($view->display['default']->display_options['fields']);
+        $view->display['default']->display_options['fields']['view_node']['label'] = 'gaballa';
+
+      }
+
+      $view = $view->render();
+
+      $node->content['carousel_'. $index] = array(
+        '#weight' => $weight + $index,
+        '#value' => $view,
+      );
+
+      $node->content['nextlink_'. $index] = array(
+        '#weight' => $weight + $index + 0.5,
+        '#value' => l('Continue...', 'node'),
+      );
+
+      dsm($node);
+
+      $index++;
+      
+    }
+
+    drupal_add_js(array('wotsnxt' => array('carousels_displayed' => $index)), 'setting');
+  }
+}
+
+/**
+ * Themes the Views Carousel View.
+ */
+function phptemplate_viewscarousel_view($view, $options = array(), $rows = array()) {
+  // Remove the skin and skin path from the options.
+  $skin = $options['skin'];
+  $path = ($skin == 'custom') ? $options['skin_path'] : NULL;
+  unset($options['skin'], $options['skin_path']);
+
+  // Remove any empty options and convert any numbers to float values.
+  foreach ($options as $key => $value) {
+    if (is_numeric($value)) {
+      $options[$key] = (float)$value;
+    }
+    if (empty($value)) {
+      unset($options[$key]);
+    }
+  }
+
+
+  $item_num = $view->display['default']->display_options['items_per_page'];
+
+  if (count($rows) < $item_num) {
+    //$rows[] = 'Continue yourself';
+  }
+
+  //dsm($rows);
+
+  // Use jCarousel to create the carousel.
+  return theme('jcarousel', $rows, $options, $skin, $path, 'viewscarousel-'. $view->name .'-'. $view->current_display);
+}

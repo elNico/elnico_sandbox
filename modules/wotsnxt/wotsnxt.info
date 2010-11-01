@@ -1,0 +1,4 @@
+; $Id$
+name = Wotsnxt
+description = All wotsnxt custom code.
+core = 6.x
